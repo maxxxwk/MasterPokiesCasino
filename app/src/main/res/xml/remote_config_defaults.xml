@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <defaults>
-  <entry>
-    <key>privacy_policy</key>
-    <value>Privacy policy text</value>
-  </entry>
-  <entry>
-    <key>device_language</key>
-    <value>en</value>
-  </entry>
-  <entry>
-    <key>offer_url</key>
-    <value>https://www.example.com/</value>
-  </entry>
-  <entry>
-    <key>is_offer_enabled</key>
-    <value>false</value>
-  </entry>
+    <entry>
+        <key>device_language</key>
+        <value>en-au</value>
+    </entry>
+    <entry>
+        <key>privacy_policy</key>
+        <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum
+        </value>
+    </entry>
+    <entry>
+        <key>offer_url</key>
+        <value>https://www.google.com.ua/</value>
+    </entry>
+    <entry>
+        <key>is_offer_enabled</key>
+        <value>true</value>
+    </entry>
 </defaults>

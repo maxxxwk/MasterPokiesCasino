@@ -82,4 +82,6 @@ dependencies {
     implementation("com.github.leonard-palm:compose-state-events:2.0.3")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    implementation("com.google.accompanist:accompanist-webview:0.30.1")
 }
