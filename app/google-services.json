@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "318257952927",
+    "project_id": "master-pokies-casino",
+    "storage_bucket": "master-pokies-casino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318257952927:android:cfd12f3e99bc6dbd134aaa",
+        "android_client_info": {
+          "package_name": "com.upstars.masterpokiescasino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318257952927-seal72mmlj3kg1glibcs8a7esvjn8bb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ9CQz7UgXTJv8P8xdpttkdQn6-A26YG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318257952927-seal72mmlj3kg1glibcs8a7esvjn8bb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

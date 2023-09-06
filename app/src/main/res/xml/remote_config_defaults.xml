@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<defaults>
+  <entry>
+    <key>privacy_policy</key>
+    <value>Privacy policy text</value>
+  </entry>
+  <entry>
+    <key>device_language</key>
+    <value>en</value>
+  </entry>
+  <entry>
+    <key>offer_url</key>
+    <value>https://www.example.com/</value>
+  </entry>
+  <entry>
+    <key>is_offer_enabled</key>
+    <value>false</value>
+  </entry>
+</defaults>
