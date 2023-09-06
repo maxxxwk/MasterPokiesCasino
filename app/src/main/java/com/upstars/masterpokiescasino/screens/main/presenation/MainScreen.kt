@@ -3,6 +3,7 @@ package com.upstars.masterpokiescasino.screens.main.presenation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,6 +28,7 @@ import com.upstars.masterpokiescasino.ui.components.PinkButton
 import com.upstars.masterpokiescasino.ui.components.Prizes
 
 @Composable
+@Suppress("FunctionNaming")
 fun MainScreen(
     viewModel: MainScreenViewModel,
     navigateToSlots: () -> Unit,
@@ -36,33 +38,37 @@ fun MainScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Spacer(modifier = Modifier.height(32.dp))
         Prizes(
             coinsCount = state.prizes.coins,
             goldBarsCount = state.prizes.goldBars
         )
-        Spacer(modifier = Modifier.height(144.dp))
-        PinkButton(
-            modifier = Modifier
-                .width(320.dp)
-                .height(96.dp),
-            text = stringResource(R.string.slots_machines_button_text),
-            onClick = navigateToSlots,
-            textSize = 32.sp
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        GreenButton(
-            modifier = Modifier
-                .width(320.dp)
-                .height(96.dp),
-            text = stringResource(R.string.roulette_wheel_button_text),
-            onClick = navigateToRouletteWheel,
-            textSize = 32.sp
-        )
-        Spacer(modifier = Modifier.height(64.dp))
+
+        Column {
+            PinkButton(
+                modifier = Modifier
+                    .width(320.dp)
+                    .height(96.dp),
+                text = stringResource(R.string.slots_machines_button_text),
+                onClick = navigateToSlots,
+                textSize = 32.sp
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            GreenButton(
+                modifier = Modifier
+                    .width(320.dp)
+                    .height(96.dp),
+                text = stringResource(R.string.roulette_wheel_button_text),
+                onClick = navigateToRouletteWheel,
+                textSize = 32.sp
+            )
+        }
+
         Row(
             modifier = Modifier.clickable(
                 interactionSource = remember {

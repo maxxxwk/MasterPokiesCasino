@@ -1,4 +1,4 @@
-@file:Suppress("MagicNumber")
+@file:Suppress("MagicNumber", "FunctionNaming")
 
 package com.upstars.masterpokiescasino.screens.slots.presentation
 
@@ -97,7 +97,8 @@ private fun SlotItem(
             durationMillis = (rotationCount + targetState.ordinal / SlotMachineItem.entries.size) * 400,
             easing = LinearEasing
         ),
-        finishedListener = { onFinished?.invoke() }
+        finishedListener = { onFinished?.invoke() },
+        label = "slots animation"
     )
 
     val currentState = remember(animation) {
@@ -116,7 +117,8 @@ private fun SlotItem(
                     animationSpec = tween(200),
                     targetOffsetY = { it }
                 )
-            }
+            },
+            label = "slots animation"
         ) {
             Image(
                 painter = painterResource(

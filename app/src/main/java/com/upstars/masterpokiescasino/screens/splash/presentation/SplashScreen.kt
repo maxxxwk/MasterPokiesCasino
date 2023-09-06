@@ -1,4 +1,4 @@
-@file:Suppress("MagicNumber")
+@file:Suppress("MagicNumber", "FunctionNaming")
 
 package com.upstars.masterpokiescasino.screens.splash.presentation
 
@@ -65,7 +65,7 @@ fun SplashScreen(
                         }
                     }
                 )
-                Loading()
+                Loader()
             }
         }
         Spacer(modifier = Modifier.height(128.dp))
@@ -74,7 +74,7 @@ fun SplashScreen(
 }
 
 @Composable
-private fun Loading() {
+private fun Loader() {
     CustomProgressBar(modifier = Modifier.size(40.dp))
     Spacer(modifier = Modifier.height(16.dp))
     Text(

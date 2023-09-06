@@ -18,6 +18,7 @@ import com.upstars.masterpokiescasino.ui.components.Header
 import com.upstars.masterpokiescasino.ui.theme.forumFontFamily
 
 @Composable
+@Suppress("FunctionNaming", "MagicNumber")
 fun PrivacyPolicyScreen(
     privacyPolicyScreenViewModel: PrivacyPolicyScreenViewModel,
     onBack: () -> Unit

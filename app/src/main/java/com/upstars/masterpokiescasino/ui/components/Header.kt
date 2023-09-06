@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.sp
 import com.upstars.masterpokiescasino.R
 
 @Composable
+@Suppress("FunctionNaming")
 fun Header(text: String, onBack: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxWidth(),

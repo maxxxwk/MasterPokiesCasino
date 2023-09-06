@@ -16,10 +16,11 @@ import com.upstars.masterpokiescasino.R
 
 @Composable
 @Preview(showBackground = true)
+@Suppress("FunctionNaming")
 fun CustomProgressBar(
     modifier: Modifier = Modifier,
 ) {
-    val transition = rememberInfiniteTransition()
+    val transition = rememberInfiniteTransition(label = "progress bar animation")
     val angle by transition.animateFloat(
         initialValue = 0f,
         targetValue = 360f,
@@ -28,7 +29,8 @@ fun CustomProgressBar(
                 durationMillis = 500,
                 easing = LinearEasing
             )
-        )
+        ),
+        label = "progress bar animation"
     )
     Image(
         modifier = modifier.rotate(angle),

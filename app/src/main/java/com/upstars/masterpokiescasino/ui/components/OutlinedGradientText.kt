@@ -19,7 +19,7 @@ import com.upstars.masterpokiescasino.core.modifier.textBrush
 import com.upstars.masterpokiescasino.ui.theme.casinoFlatFontFamily
 
 @OptIn(ExperimentalTextApi::class)
-@Suppress("MagicNumber")
+@Suppress("MagicNumber", "FunctionNaming")
 @Composable
 fun OutlinedGradientText(
     modifier: Modifier = Modifier,

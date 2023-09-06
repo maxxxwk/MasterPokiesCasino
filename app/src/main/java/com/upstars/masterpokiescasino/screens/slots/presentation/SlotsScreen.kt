@@ -1,5 +1,6 @@
 package com.upstars.masterpokiescasino.screens.slots.presentation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,6 +27,7 @@ import com.upstars.masterpokiescasino.ui.components.PinkButton
 import com.upstars.masterpokiescasino.ui.components.Prize
 
 @Composable
+@Suppress("FunctionNaming")
 fun SlotsScreen(
     viewModel: SlotsScreenViewModel,
     navigateToResultScreen: (Int) -> Unit
@@ -40,7 +42,8 @@ fun SlotsScreen(
                 contentScale = ContentScale.FillBounds
             )
             .padding(horizontal = 16.dp, vertical = 32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         Prize(
             modifier = Modifier.height(48.dp),
@@ -48,7 +51,7 @@ fun SlotsScreen(
             prizeIconPainter = painterResource(R.drawable.coins)
         )
 
-        Spacer(modifier = Modifier.height(160.dp))
+        Spacer(modifier = Modifier.height(64.dp))
 
         var combination by remember {
             mutableStateOf(
@@ -61,7 +64,7 @@ fun SlotsScreen(
         }
 
         SlotMachine(
-            modifier = Modifier.size(288.dp),
+            modifier = Modifier.size(320.dp),
             isSpinning = state.isSpinning,
             onFinished = {
                 viewModel.stopSpinning()
@@ -77,12 +80,10 @@ fun SlotsScreen(
             combination = combination
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         PinkButton(
             modifier = Modifier
                 .width(320.dp)
-                .height(160.dp),
+                .height(96.dp),
             text = stringResource(R.string.spin_button_text),
             onClick = { if (!state.isSpinning) viewModel.startSpinning() },
             textSize = 32.sp

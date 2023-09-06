@@ -1,3 +1,5 @@
+@file:Suppress("FunctionNaming")
+
 package com.upstars.masterpokiescasino.ui.components
 
 import androidx.compose.foundation.Image

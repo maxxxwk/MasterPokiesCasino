@@ -1,3 +1,5 @@
+@file:Suppress("FunctionNaming")
+
 package com.upstars.masterpokiescasino.screens.result.presentation
 
 import androidx.compose.foundation.Image
@@ -42,16 +44,15 @@ fun ResultScreen(
                 contentScale = ContentScale.FillBounds
             )
             .padding(horizontal = 16.dp, vertical = 32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         Header(text = stringResource(R.string.result), onBack = onBack)
-        Spacer(modifier = Modifier.height(224.dp))
         PrizeResult(
             modifier = Modifier.height(48.dp),
             prizeType = prizeType,
             count = count
         )
-        Spacer(modifier = Modifier.height(160.dp))
         GreenButton(
             modifier = Modifier
                 .width(288.dp)

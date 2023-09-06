@@ -1,5 +1,6 @@
 package com.upstars.masterpokiescasino.screens.rouletteWheel.presentation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,7 @@ import com.upstars.masterpokiescasino.ui.components.GreenButton
 import com.upstars.masterpokiescasino.ui.components.Prize
 
 @Composable
+@Suppress("FunctionNaming")
 fun RouletteWheelScreen(
     viewModel: RouletteWheelScreenViewModel,
     navigateToResultScreen: (Int) -> Unit
@@ -36,18 +38,19 @@ fun RouletteWheelScreen(
                 contentScale = ContentScale.FillBounds
             )
             .padding(horizontal = 16.dp, vertical = 32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         Prize(
             modifier = Modifier.height(48.dp),
             count = state.goldBars,
             prizeIconPainter = painterResource(R.drawable.gold_bars)
         )
-
-        Spacer(modifier = Modifier.height(160.dp))
+        
+        Spacer(modifier = Modifier.height(96.dp))
 
         RouletteWheel(
-            modifier = Modifier.size(288.dp),
+            modifier = Modifier.size(256.dp),
             isSpinning = state.isSpinning,
             onFinished = { angle ->
                 val selectedSector = when (360 - angle.toInt()) {
@@ -71,12 +74,10 @@ fun RouletteWheelScreen(
             }
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         GreenButton(
             modifier = Modifier
                 .width(320.dp)
-                .height(160.dp),
+                .height(96.dp),
             text = stringResource(R.string.spin_button_text),
             onClick = { if (!state.isSpinning) viewModel.startSpinning() },
             textSize = 32.sp

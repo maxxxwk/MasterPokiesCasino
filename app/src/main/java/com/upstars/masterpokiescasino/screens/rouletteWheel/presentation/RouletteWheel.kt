@@ -20,7 +20,7 @@ import java.util.Random
 
 
 @Composable
-@Suppress("MagicNumber")
+@Suppress("MagicNumber", "FunctionNaming")
 fun RouletteWheel(
     modifier: Modifier = Modifier,
     isSpinning: Boolean,
@@ -33,7 +33,8 @@ fun RouletteWheel(
             durationMillis = 4000,
             easing = CubicBezierEasing(0f, 1f, 0.3f, 1f)
         ),
-        finishedListener = { onFinished(it - 360f * 8) }
+        finishedListener = { onFinished(it - 360f * 8) },
+        label = "roulette wheel animation"
     )
     Box {
         Image(
