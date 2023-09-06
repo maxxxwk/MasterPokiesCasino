@@ -1,5 +1,6 @@
 package com.upstars.masterpokiescasino.screens.splash.domain
 
+import android.util.Log
 import com.upstars.masterpokiescasino.firebase.FirebaseRemoteConfigsRepository
 import com.upstars.masterpokiescasino.screens.splash.data.SettingsRepository
 import com.upstars.masterpokiescasino.screens.splash.data.SimCardAvailabilityRepository
@@ -12,11 +13,19 @@ class ChecksUseCase @Inject constructor(
     private val firebaseRemoteConfigsRepository: FirebaseRemoteConfigsRepository
 ) {
     operator fun invoke(): Boolean {
+        val firebaseLocale = if (firebaseRemoteConfigsRepository.deviceLanguage.contains("-")) {
+            Locale(
+                firebaseRemoteConfigsRepository.deviceLanguage.split("-")[0],
+                firebaseRemoteConfigsRepository.deviceLanguage.split("-")[1]
+            )
+        } else {
+            Locale(firebaseRemoteConfigsRepository.deviceLanguage)
+        }
         return simCardAvailabilityRepository.isAvailable() &&
                 !settingsRepository.isAirplaneModeOn() &&
                 !settingsRepository.isDeveloperModeOn() &&
                 !settingsRepository.isUSBDebuggingOn() &&
-                Locale(firebaseRemoteConfigsRepository.deviceLanguage).language == Locale.getDefault().language &&
+                firebaseLocale.toLanguageTag() == Locale.getDefault().toLanguageTag() &&
                 firebaseRemoteConfigsRepository.isOfferEnabled
     }
 }

@@ -2,10 +2,10 @@ package com.upstars.masterpokiescasino.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.upstars.masterpokiescasino.core.viewmodel.ViewModelFactory
 import com.upstars.masterpokiescasino.screens.main.presenation.MainScreen
@@ -18,8 +18,10 @@ import com.upstars.masterpokiescasino.screens.splash.presentation.SplashScreen
 import com.upstars.masterpokiescasino.screens.webview.presentation.WebviewScreen
 
 @Composable
-fun Navigation(viewModelFactory: ViewModelFactory) {
-    val navController = rememberNavController()
+fun Navigation(
+    viewModelFactory: ViewModelFactory,
+    navController: NavHostController
+) {
     NavHost(
         navController = navController,
         startDestination = NavigationRoute.SPLASH.route
