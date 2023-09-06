@@ -1,10 +1,10 @@
 package com.upstars.masterpokiescasino.screens.splash.domain
 
-import android.util.Log
 import com.upstars.masterpokiescasino.firebase.FirebaseRemoteConfigsRepository
 import com.upstars.masterpokiescasino.screens.splash.data.SettingsRepository
 import com.upstars.masterpokiescasino.screens.splash.data.SimCardAvailabilityRepository
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 import java.util.Locale
 
 class ChecksUseCase @Inject constructor(
@@ -12,7 +12,9 @@ class ChecksUseCase @Inject constructor(
     private val simCardAvailabilityRepository: SimCardAvailabilityRepository,
     private val firebaseRemoteConfigsRepository: FirebaseRemoteConfigsRepository
 ) {
-    operator fun invoke(): Boolean {
+    suspend operator fun invoke(): Boolean {
+        firebaseRemoteConfigsRepository.fetch()
+        delay(DELAY_BEFORE_CHECK)
         val firebaseLocale = if (firebaseRemoteConfigsRepository.deviceLanguage.contains("-")) {
             Locale(
                 firebaseRemoteConfigsRepository.deviceLanguage.split("-")[0],
@@ -27,5 +29,9 @@ class ChecksUseCase @Inject constructor(
                 !settingsRepository.isUSBDebuggingOn() &&
                 firebaseLocale.toLanguageTag() == Locale.getDefault().toLanguageTag() &&
                 firebaseRemoteConfigsRepository.isOfferEnabled
+    }
+
+    private companion object {
+        const val DELAY_BEFORE_CHECK = 4000L
     }
 }

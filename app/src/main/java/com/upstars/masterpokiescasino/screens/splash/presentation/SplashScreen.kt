@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package com.upstars.masterpokiescasino.screens.splash.presentation
 
 import androidx.compose.foundation.layout.Arrangement
@@ -27,9 +29,6 @@ import com.upstars.masterpokiescasino.ui.components.CustomProgressBar
 import com.upstars.masterpokiescasino.ui.components.GreenButton
 import com.upstars.masterpokiescasino.ui.theme.casinoFlatFontFamily
 import de.palm.composestateevents.EventEffect
-import kotlinx.coroutines.delay
-
-private const val DELAY_TIME_BEFORE_NAVIGATION = 1500L
 
 @Composable
 fun SplashScreen(
@@ -60,7 +59,6 @@ fun SplashScreen(
                     event = (state as SplashScreenState.Loading).navigateToNextScreen,
                     onConsumed = viewModel::navigationEventConsumed,
                     action = {
-                        delay(DELAY_TIME_BEFORE_NAVIGATION)
                         when (it) {
                             SplashScreenState.NextScreen.MAIN -> navigateToMainScreen()
                             SplashScreenState.NextScreen.WEBVIEW -> navigateToWebviewScreen()

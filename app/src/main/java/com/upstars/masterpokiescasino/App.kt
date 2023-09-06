@@ -1,7 +1,11 @@
 package com.upstars.masterpokiescasino
 
 import android.app.Application
+import android.util.Log
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ConfigUpdate
+import com.google.firebase.remoteconfig.ConfigUpdateListener
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.upstars.masterpokiescasino.di.AppComponent
@@ -21,7 +25,17 @@ class App : Application() {
                 }
             )
             setDefaultsAsync(R.xml.remote_config_defaults)
-            fetchAndActivate()
+            addOnConfigUpdateListener(
+                object : ConfigUpdateListener {
+                    override fun onUpdate(configUpdate: ConfigUpdate) {
+                        fetchAndActivate()
+                    }
+
+                    override fun onError(error: FirebaseRemoteConfigException) {
+                        Log.e("App", "Configs update error", error)
+                    }
+                }
+            )
         }
     }
 
