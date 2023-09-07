@@ -18,6 +18,7 @@ import com.upstars.masterpokiescasino.screens.splash.presentation.SplashScreen
 import com.upstars.masterpokiescasino.screens.webview.presentation.WebviewScreen
 
 @Composable
+@Suppress("FunctionNaming", "LongMethod")
 fun Navigation(
     viewModelFactory: ViewModelFactory,
     navController: NavHostController
@@ -102,7 +103,7 @@ fun Navigation(
                 count = it.arguments?.getInt(COUNT_ARGUMENT_KEY)
                     ?: error("Count should be provided for result screen!"),
                 prizeType = PrizeType.entries[it.arguments?.getInt(PRIZE_TYPE_ARGUMENT_KEY)
-                    ?: error("Prizen type should be provided for result screen!")],
+                    ?: error("Prize type should be provided for result screen!")],
                 onBack = navController::popBackStack,
                 navigateToMainScreen = {
                     navController.popBackStack(
