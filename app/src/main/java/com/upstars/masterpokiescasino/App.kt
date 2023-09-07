@@ -28,7 +28,7 @@ class App : Application() {
             addOnConfigUpdateListener(
                 object : ConfigUpdateListener {
                     override fun onUpdate(configUpdate: ConfigUpdate) {
-                        fetchAndActivate()
+                        activate()
                     }
 
                     override fun onError(error: FirebaseRemoteConfigException) {

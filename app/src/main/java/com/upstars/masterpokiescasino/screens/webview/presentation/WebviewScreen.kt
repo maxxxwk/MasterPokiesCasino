@@ -10,6 +10,7 @@ import com.google.accompanist.web.WebView
 import com.google.accompanist.web.rememberWebViewState
 
 @SuppressLint("SetJavaScriptEnabled")
+@Suppress("FunctionNaming")
 @Composable
 fun WebviewScreen(viewModel: WebviewScreenViewModel) {
     WebView(
