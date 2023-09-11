@@ -1,5 +1,9 @@
+@file:Suppress("FunctionNaming")
+
 package com.upstars.masterpokiescasino.screens.main.presenation
 
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -12,10 +16,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -26,9 +34,9 @@ import com.upstars.masterpokiescasino.ui.components.GreenButton
 import com.upstars.masterpokiescasino.ui.components.OutlinedGradientText
 import com.upstars.masterpokiescasino.ui.components.PinkButton
 import com.upstars.masterpokiescasino.ui.components.Prizes
+import kotlinx.coroutines.delay
 
 @Composable
-@Suppress("FunctionNaming")
 fun MainScreen(
     viewModel: MainScreenViewModel,
     navigateToSlots: () -> Unit,
@@ -36,6 +44,8 @@ fun MainScreen(
     navigateToPrivacyPolicyScreen: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    DoubleBackClickForExit()
 
     Column(
         modifier = Modifier
@@ -48,7 +58,6 @@ fun MainScreen(
             coinsCount = state.prizes.coins,
             goldBarsCount = state.prizes.goldBars
         )
-
         Column {
             PinkButton(
                 modifier = Modifier
@@ -68,12 +77,9 @@ fun MainScreen(
                 textSize = 32.sp
             )
         }
-
         Row(
             modifier = Modifier.clickable(
-                interactionSource = remember {
-                    MutableInteractionSource()
-                },
+                interactionSource = remember { MutableInteractionSource() },
                 indication = null,
                 onClick = navigateToPrivacyPolicyScreen
             ),
@@ -89,6 +95,23 @@ fun MainScreen(
                 text = stringResource(R.string.privacy_policy),
                 textSize = 24.sp
             )
+        }
+    }
+}
+
+private const val DOUBLE_BACK_CLICK_TIME = 2000L
+
+@Composable
+private fun DoubleBackClickForExit() {
+    var doubleBackToExitPressedOnce by remember { mutableStateOf(false) }
+    BackHandler(!doubleBackToExitPressedOnce) { doubleBackToExitPressedOnce = true }
+
+    val context = LocalContext.current
+    LaunchedEffect(doubleBackToExitPressedOnce) {
+        if (doubleBackToExitPressedOnce) {
+            Toast.makeText(context, R.string.exit_toast, Toast.LENGTH_SHORT).show()
+            delay(DOUBLE_BACK_CLICK_TIME)
+            doubleBackToExitPressedOnce = false
         }
     }
 }
